@@ -5,7 +5,7 @@ import Todos from './components/Todos'
 class App extends React.Component {
   state = {
     todos: [
-      {id:1, title: 'take out trash', completed: false},
+      {id:1, title: 'take out trash', completed: true},
       {id:2, title: 'dinner with wife', completed: false},
       {id:3, title: 'meeting with boss', completed: false},
     ]
