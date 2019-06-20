@@ -28,11 +28,24 @@ class App extends React.Component {
     this.setState(newState)
   }
 
+  deleteItem = (todoItem)=>{
+    // simple map function to create a new, updated version of todos array
+    let newTodos = this.state.todos.filter(todo=>{
+      return todo.id!==todoItem.id
+    })
+
+    // creating a new, updated version of state object
+    let newState = {todos: newTodos}
+
+    // using react setState() method to set new state
+    this.setState(newState)
+  }
+
   render() {
     return (
       <div className="App">
         <h1>this is App</h1>
-        <Todos todos={this.state.todos} toggleComplete={this.toggleComplete}/>
+        <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} deleteItem={this.deleteItem}/>
       </div>
     )
   }
