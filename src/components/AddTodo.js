@@ -5,10 +5,16 @@ export class AddTodo extends Component {
         title:''
     }
 
+    onSubmit = e=>{
+        e.preventDefault()
+        this.props.addTodo(this.state)
+        this.setState({title: ''})
+    }
+
     render() {
         return (
             <div>
-                <form style={{display: 'flex'}}>
+                <form style={{display: 'flex'}} onSubmit={this.onSubmit}>
                     <input
                         type='text'
                         name='title'
