@@ -1,11 +1,33 @@
 import React from 'react'
 import uuid from 'uuid'
-import './App.css';
+import './App.css'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/layout/Header'
 import AddTodo from './components/AddTodo'
 import Todos from './components/Todos'
+import About from './components/pages/About'
 
 class App extends React.Component {
+
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <Header />
+            <Route path='/home' render={props=>(
+              <React.Fragment>
+                <AddTodo addTodo={this.addTodo}/>
+                <h1>this is App</h1>
+                <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} deleteItem={this.deleteItem}/>
+              </React.Fragment>
+            )} />
+
+            <Route path='/about' component={About} />
+        </div>
+      </Router>
+    )
+  }
+
   state = {
     todos: [
       {id:uuid.v4(), title: 'take out trash', completed: false},
@@ -54,17 +76,6 @@ class App extends React.Component {
 
     console.log(this.state.todos)
     this.setState(this.state)
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <AddTodo addTodo={this.addTodo}/>
-        <h1>this is App</h1>
-        <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} deleteItem={this.deleteItem}/>
-      </div>
-    )
   }
 }
 
