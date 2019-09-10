@@ -1,4 +1,4 @@
-import ADD_ARTICLE from './actionTypes'
+import {ADD_ARTICLE} from './actionTypes'
 
 export function addArticle(payload){
     return {
@@ -6,4 +6,3 @@ export function addArticle(payload){
         payload
     }
 }
-

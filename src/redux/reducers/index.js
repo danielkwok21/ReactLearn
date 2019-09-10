@@ -1,5 +1,5 @@
 // import a bunch of constants
-import ADD_ARTICLE from '../actions/actionTypes'
+import {ADD_ARTICLE} from '../actions/actionTypes'
 
 // initial state of the store
 const initialState = {
