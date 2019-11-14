@@ -8,6 +8,7 @@
     "@progress/kendo-react-pdf": "^3.6.0",
     "bizcharts": "^3.5.6",
     "canvg": "^2.0.0",
+    "moment": "^2.24.0",
     "pdfmake": "^0.1.62",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
