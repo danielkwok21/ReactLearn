@@ -5,17 +5,12 @@ import {addArticle} from './redux/actions/article'
 
 class App extends Component {
   
+  // dispatches the addArticle action
   componentDidMount(){
-    const newArticle = {
-      title: "This is a new article"
-    }
-
-    // dispatches the addArticle action
-    this.props.dispatch(addArticle(newArticle))
+    this.props.dispatch(addArticle())
   }
 
   render() {
-
     return (
       <div className="App">
         {
@@ -31,3 +26,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(App)
+
+
