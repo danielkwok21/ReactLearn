@@ -1,21 +1,33 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
-// redux imports
-import store from './redux/store'
-import {addArticle} from './redux/actions'
+import {addArticle} from './redux/actions/article'
 
-export default class App extends Component {
+class App extends Component {
   
-  render() {
-    
-    // dispatches the addArticle action
-    store.dispatch(addArticle({
+  componentDidMount(){
+    const newArticle = {
       title: "This is a new article"
-    }))
-    
+    }
+
+    // dispatches the addArticle action
+    this.props.dispatch(addArticle(newArticle))
+  }
+
+  render() {
+
     return (
-      <div className="App">  
+      <div className="App">
+        {
+          this.props.article.articles.map(a=><h1>{a.title}</h1>)
+        }
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  article: state.article,
+})
+
+export default connect(mapStateToProps)(App)
