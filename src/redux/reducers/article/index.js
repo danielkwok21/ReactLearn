@@ -7,7 +7,6 @@ const initialState = {
 }
 
 export default (state=initialState, action) => {
-    console.log('reducer action', action)
     // makes a copy of the store
     const newState = Object.assign({}, state)
     switch(action.type){
