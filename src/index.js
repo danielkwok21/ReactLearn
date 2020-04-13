@@ -16,7 +16,7 @@ import PageThree from './pages/PageThree'
 
 const store = configureStore()
 
-// STEP 4: Connect router with app
+// STEP 3: Connect router with app
 ReactDOM.render(
 <Provider store={store}>
     <ConnectedRouter history={history}>
