@@ -1,7 +1,22 @@
-import {createStore} from 'redux'
-import rootReducer from '../reducers'
+import {applyMiddleware, compose, createStore} from 'redux'
+import {createBrowserHistory} from 'history'
+import {routerMiddleware} from 'connected-react-router'
+import createRootReducer from '../reducers'
 
-const store = createStore(rootReducer)
+export const history = createBrowserHistory()
 
-export default store
+// STEP 2: Incorperate browser history into redux
+export default function configureStore(preloadedState){
+    const store = createStore(
+        createRootReducer(history),
+        preloadedState,
+        compose(
+            applyMiddleware(
+                routerMiddleware(history)
+            )
+        )
+    )
+
+    return store
+}
 

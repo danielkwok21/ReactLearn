@@ -4,13 +4,32 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// redux import
+import {Route, Switch} from 'react-router'
+import {ConnectedRouter} from 'connected-react-router'
+import configureStore, {history} from './redux/store'
 import {Provider} from 'react-redux'
-import store from './redux/store'
 
+// pages import
+import PageOne from './pages/PageOne'
+import PageTwo from './pages/PageTwo'
+import PageThree from './pages/PageThree'
+
+const store = configureStore()
+
+// STEP 4: Connect router with app
 ReactDOM.render(
 <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+        <Switch>
+            {/* Specify pages here */}
+            <Route exact path='/one' render={()=><PageOne />} />
+            <Route exact path='/two' render={()=><PageTwo />} />
+            <Route exact path='/three' render={()=><PageThree />} />
+
+            {/* Fall through pages */}
+            <Route render={()=><div>No such page</div>} />
+        </Switch>
+    </ConnectedRouter>
 </Provider>
 
 , document.getElementById('root'));
